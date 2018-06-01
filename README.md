@@ -6,13 +6,13 @@
 - Dlib (We used version 19.13.0)
 - Numpy (We used version 1.14.3)
 
-### For graphical version:
+### For the graphical version (recognize a face that is shown to the camera):
 ```bash
 python3 main.py [training-data-directory] [number-of-training-images]
 ```
 "training-data-directory" should be a directory inside the "training" directory
 
-### For command-line version (this version will output a confidence)
+### For the command-line version (this version will output a confidence):
 ```bash
 python3 main.py [training-data-directory] [number-of-training-images] -i [path-to-test-data]
 ```
