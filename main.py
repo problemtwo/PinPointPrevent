@@ -162,7 +162,7 @@ if __name__ == '__main__':
 	if len(sys.argv) > 4:
 		if sys.argv[3] == '-i':
 			# python3 main.py x Abhi -i
-			main(cmd_input=True,img=cv2.imread(sys.argv[4]))
+			main(cmd_input=True,tr=True,outp=True,img=cv2.imread(sys.argv[4]))
 	elif sys.argv[1] == '-m':
 		multiple()
 	else:
