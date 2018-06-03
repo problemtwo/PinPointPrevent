@@ -113,9 +113,10 @@ def main(cmd_input=False,img=None,path=sys.argv[1],tr=True,outp=True):
 						cv2.rectangle(copy_image,(x,y),(x+w,y+h), (0, 0, 255), 2)
 			if len(detected) > 0:
 				detected.sort(key=lambda x: x[4])
-				(x,y,w,h,_) = detected[0]
+				(x,y,w,h,c) = detected[0]
 				cv2.rectangle(copy_image,(x,y),(x+w,y+h), (0, 255, 0), 2)
-				cv2.putText(copy_image,path,(x,y), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,255,0),2,cv2.LINE_AA)
+				cv2.putText(copy_image,'Name: {}'.format(path),(x,y-40), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,255,0),2,cv2.LINE_AA)
+				cv2.putText(copy_image,'Confidence: {}/100'.format(round(c * 100) / 100),(x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 1,(0,255,0),2,cv2.LINE_AA)
 			
 			cv2.imshow('video',copy_image)
 			key = cv2.waitKey(30)
