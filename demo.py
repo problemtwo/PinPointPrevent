@@ -4,13 +4,15 @@ import time
 
 cas = cv2.CascadeClassifier('face_cascade.xml')
 
-def main():
+def main(name=None):
 	cap = cv2.VideoCapture(0)
 	dt = time.time()
 
-	name = raw_input('What is your name? ')
+	if name is None:
+		name = raw_input('What is your name? ')
 	if not os.path.exists(os.path.join('training',name)):
 		os.mkdir(os.path.join('training',name))
+	print(name)
 
 	num_faces = 0
 
@@ -33,4 +35,4 @@ def main():
 	cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-	name = main()
+	main()
