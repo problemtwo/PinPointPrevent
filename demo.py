@@ -18,7 +18,7 @@ def main(name=None):
 
 	while True:
 		if round(time.time() - dt) >= 30:
-			return
+			break
 		_,im = cap.read()
 		faces = cas.detectMultiScale(im,scaleFactor=1.2,minNeighbors=5)
 		if len(faces) > 0:
