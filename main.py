@@ -68,6 +68,7 @@ def train(name):
 	         cv2.cvtColor(
            cv2.imread(os.path.join('training',name,flname)),cv2.COLOR_BGR2GRAY),(100,100))
             for flname in os.listdir(os.path.join('training',name)) if flname.split('.')[-1] in ['JPG','jpg','PNG','png']]
+	
 	images = []
 	for im in data:
 		save = []
