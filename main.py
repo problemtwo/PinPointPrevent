@@ -29,17 +29,17 @@ def align(save):
 			shape = pred(save[ix], d)   #68 facial points
 			p1 = [(shape.part(45).x,shape.part(45).y),(shape.part(36).x,shape.part(36).y)]
 			p2 = [((int(0.7*100),33)),(int(0.3*100),33)]
-			s60 = math.sin(60*math.pi/180);
-			c60 = math.cos(60*math.pi/180); 
-			inPts = np.copy(p1).tolist();
-			outPts = np.copy(p2).tolist();
-			xin = c60*(inPts[0][0] - inPts[1][0]) - s60*(inPts[0][1] - inPts[1][1]) + inPts[1][0];
-			yin = s60*(inPts[0][0] - inPts[1][0]) + c60*(inPts[0][1] - inPts[1][1]) + inPts[1][1];
-			inPts.append([np.int(xin), np.int(yin)]);
-			xout = c60*(outPts[0][0] - outPts[1][0]) - s60*(outPts[0][1] - outPts[1][1]) + outPts[1][0];
-			yout = s60*(outPts[0][0] - outPts[1][0]) + c60*(outPts[0][1] - outPts[1][1]) + outPts[1][1];
-			outPts.append([np.int(xout), np.int(yout)]);
-			tform = cv2.estimateRigidTransform(np.array([inPts]), np.array([outPts]), False);
+			s60 = math.sin(60*math.pi/180)
+			c60 = math.cos(60*math.pi/180) 
+			inPts = np.copy(p1).tolist()
+			outPts = np.copy(p2).tolist()
+			xin = c60*(inPts[0][0] - inPts[1][0]) - s60*(inPts[0][1] - inPts[1][1]) + inPts[1][0]
+			yin = s60*(inPts[0][0] - inPts[1][0]) + c60*(inPts[0][1] - inPts[1][1]) + inPts[1][1]
+			inPts.append([np.int(xin), np.int(yin)])
+			xout = c60*(outPts[0][0] - outPts[1][0]) - s60*(outPts[0][1] - outPts[1][1]) + outPts[1][0]
+			yout = s60*(outPts[0][0] - outPts[1][0]) + c60*(outPts[0][1] - outPts[1][1]) + outPts[1][1]
+			outPts.append([np.int(xout), np.int(yout)])
+			tform = cv2.estimateRigidTransform(np.array([[int(j) for j in i] for i in inPts]), np.array([[int(p) for p in o] for o in outPts]), False)
 			img2 = cv2.warpAffine(save[ix], tform, (100,100));
 
 			detections = detect(img2,3)
