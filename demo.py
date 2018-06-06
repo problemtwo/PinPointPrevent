@@ -12,7 +12,7 @@ def main(name=None):
 		name = raw_input('What is your name? ')
 	if not os.path.exists(os.path.join('training',name)):
 		os.mkdir(os.path.join('training',name))
-	print(name)
+#	print(name)
 
 	num_faces = 0
 
